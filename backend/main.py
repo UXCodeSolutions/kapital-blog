@@ -130,7 +130,8 @@ class ArticleResponse(ArticleBase):
     id: int
     slug: Optional[str] = None
 
-    model_config = {"from_attributes": True}
+    class Config:
+        orm_mode = True
 
 class UserRegister(BaseModel):
     username: str
