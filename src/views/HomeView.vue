@@ -126,6 +126,7 @@ const scrollTo = (id) => {
     
     <!-- HEADER SLIDER (Actuando como Hero Dinámico) -->
     <SliderHeader :articles="articles" v-if="articles.length > 0" />
+    <div v-else style="padding: 60px 0; text-align: center; color: var(--muted);">Cargando artículos...</div>
 
     <!-- AD PLACEHOLDER TOP -->
     <AdPlaceholder text="Ad Space - Top Banner" height="90px" />

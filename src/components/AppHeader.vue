@@ -10,6 +10,8 @@ const props = defineProps({
 const emit = defineEmits(['toggle-theme']);
 const router = useRouter();
 
+const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:8000').replace(/\/$/, '');
+
 const open = ref(false);
 const searchQuery = ref('');
 const mobileSearchOpen = ref(false);
@@ -63,7 +65,7 @@ const onSearchInput = () => {
   clearTimeout(debounceTimer);
   debounceTimer = setTimeout(async () => {
     try {
-      const res = await fetch(`http://localhost:8000/articles?limit=5&q=${encodeURIComponent(q)}`);
+      const res = await fetch(`${API_BASE}/articles?limit=5&q=${encodeURIComponent(q)}`);
       if (res.ok) {
         searchResults.value = await res.json();
       }
