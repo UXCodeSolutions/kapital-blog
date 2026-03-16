@@ -49,21 +49,36 @@ const handleSubmit = async () => {
         <p>¿Tienes alguna pregunta, sugerencia o propuesta de colaboración? Nos encantaría escucharte.</p>
         <div class="contact-details">
           <div class="detail-item">
-            <span class="detail-icon">✉️</span>
+            <span class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 6h16v12H4z" />
+                <path d="m4 7 8 6 8-6" />
+              </svg>
+            </span>
             <div>
               <strong>Email</strong>
               <p>contacto@kapital.blog</p>
             </div>
           </div>
           <div class="detail-item">
-            <span class="detail-icon">🕐</span>
+            <span class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v6l3 2" />
+              </svg>
+            </span>
             <div>
               <strong>Tiempo de respuesta</strong>
               <p>Respondemos en 24-48 horas</p>
             </div>
           </div>
           <div class="detail-item">
-            <span class="detail-icon">📍</span>
+            <span class="detail-icon" aria-hidden="true">
+              <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s7-4.5 7-10a7 7 0 0 0-14 0c0 5.5 7 10 7 10z" />
+                <circle cx="12" cy="11" r="2" />
+              </svg>
+            </span>
             <div>
               <strong>Redes sociales</strong>
               <p>@KapitalBlog en todas las plataformas</p>

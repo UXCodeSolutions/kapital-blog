@@ -17,22 +17,48 @@
           <h2>¿Qué Cubrimos?</h2>
           <div class="topics-grid">
             <div class="topic-card">
-              <span class="topic-icon">💰</span>
+              <span class="topic-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 1v22"></path>
+                  <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
+                </svg>
+              </span>
               <h3>Presupuesto</h3>
               <p>Noticias sobre políticas fiscales, presupuestos gubernamentales y flujos de capital</p>
             </div>
             <div class="topic-card">
-              <span class="topic-icon">🏦</span>
+              <span class="topic-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 10h18" />
+                  <path d="M4 10V20" />
+                  <path d="M20 10v10" />
+                  <path d="M7 20v-6" />
+                  <path d="M12 20v-6" />
+                  <path d="M17 20v-6" />
+                  <path d="M2 10l10-6 10 6" />
+                </svg>
+              </span>
               <h3>Ahorro</h3>
               <p>Tendencias en tasas de interés, productos bancarios y movimientos del sector</p>
             </div>
             <div class="topic-card">
-              <span class="topic-icon">📈</span>
+              <span class="topic-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M3 3v18h18"></path>
+                  <path d="M7 14l4-4 3 3 6-6"></path>
+                </svg>
+              </span>
               <h3>Inversión</h3>
               <p>Cobertura de mercados bursátiles, criptomonedas y activos alternativos</p>
             </div>
             <div class="topic-card">
-              <span class="topic-icon">💳</span>
+              <span class="topic-icon" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="6" width="18" height="12" rx="2" />
+                  <path d="M3 10h18" />
+                  <path d="M7 15h4" />
+                </svg>
+              </span>
               <h3>Crédito</h3>
               <p>Análisis del panorama crediticio, regulaciones y productos financieros</p>
             </div>

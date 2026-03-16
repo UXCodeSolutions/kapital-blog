@@ -26,7 +26,12 @@ const goToTag = (tag) => {
 <template>
   <aside class="sidebar" aria-label="Barra lateral">
     <div class="search-sidebar">
-      <span class="search-icon">🔍</span>
+      <span class="search-icon" aria-hidden="true">
+        <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+      </span>
       <form @submit.prevent="handleSearch" style="flex:1; display:flex;">
         <input v-model="searchQuery" type="text" placeholder="Search for articles, authors, or topics..." class="search-input" />
       </form>

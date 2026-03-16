@@ -195,7 +195,12 @@ const scrollTo = (id) => {
     <section class="section newsletter-section" aria-label="Newsletter">
       <div class="container">
         <div class="newsletter-banner">
-           <div class="newsletter-icon">✉️</div>
+           <div class="newsletter-icon" aria-hidden="true">
+             <svg class="icon" viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+               <path d="M4 6h16v12H4z" />
+               <path d="m4 7 8 6 8-6" />
+             </svg>
+           </div>
            <h2>The Sunday Briefing</h2>
            <p>Join 50,000+ investors and financial professionals who receive our weekly curated insights on markets, wealth management, and macro trends. No spam, just substance.</p>
            <form class="newsletter-inline-form" @submit.prevent="subscribeNewsletter">

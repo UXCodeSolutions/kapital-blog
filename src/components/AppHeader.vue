@@ -12,8 +12,13 @@ const router = useRouter();
 
 const open = ref(false);
 const searchQuery = ref('');
+const mobileSearchOpen = ref(false);
 
 const toggle = () => { open.value = !open.value; };
+const toggleMobileSearch = () => {
+  mobileSearchOpen.value = !mobileSearchOpen.value;
+  if (mobileSearchOpen.value) open.value = false;
+};
 
 const toggleTheme = () => { emit('toggle-theme'); };
 
@@ -77,8 +82,18 @@ const closeSearchDropdown = (e) => {
   }
 };
 
+const closeMobileSearchOnOutside = (e) => {
+  if (!mobileSearchOpen.value) return;
+  const isInside = e.target.closest('.mobile-search-panel') || e.target.closest('.mobile-search-toggle');
+  if (!isInside) {
+    mobileSearchOpen.value = false;
+    showDropdown.value = false;
+  }
+};
+
 onMounted(() => {
   document.addEventListener('click', closeSearchDropdown);
+  document.addEventListener('click', closeMobileSearchOnOutside);
 });
 </script>
 
@@ -101,7 +116,12 @@ onMounted(() => {
       </nav>
       
       <div class="header-search">
-        <span class="search-icon">🔍</span>
+        <span class="search-icon" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M21 21l-4.35-4.35"></path>
+          </svg>
+        </span>
         <form @submit.prevent="handleSearch">
           <input 
             v-model="searchQuery" 
@@ -137,7 +157,7 @@ onMounted(() => {
 
       <div class="header-actions">
          <template v-if="isLoggedIn">
-           <span class="user-greeting">👋 {{ currentUser?.username }}</span>
+           <span class="user-greeting">{{ currentUser?.username }}</span>
            <button @click="logout" class="login-link" style="background:none;border:none;cursor:pointer;color:inherit;font-size:14px;">Logout</button>
          </template>
          <template v-else>
@@ -151,9 +171,23 @@ onMounted(() => {
           :aria-pressed="theme === 'dark' ? 'true' : 'false'"
           @click="toggleTheme"
         >
-          <span class="theme-toggle-icon" aria-hidden="true">{{ theme === 'dark' ? '☀' : '☾' }}</span>
+          <span class="theme-toggle-icon" aria-hidden="true">{{ theme === 'dark' ? 'Light' : 'Dark' }}</span>
         </button>
       </div>
+
+      <button
+        class="mobile-search-toggle"
+        type="button"
+        :aria-expanded="mobileSearchOpen ? 'true' : 'false'"
+        aria-controls="mobile-search-panel"
+        @click="toggleMobileSearch"
+      >
+        <svg class="icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="M21 21l-4.35-4.35"></path>
+        </svg>
+        <span class="sr-only">Buscar</span>
+      </button>
 
       <button
         class="nav-toggle"
@@ -173,7 +207,7 @@ onMounted(() => {
       <router-link v-for="it in items" :key="'m-'+it.path" :to="it.path" @click="open = false">{{ it.label }}</router-link>
        <div class="mobile-actions">
          <template v-if="isLoggedIn">
-           <span>👋 {{ currentUser?.username }}</span>
+           <span>{{ currentUser?.username }}</span>
            <button @click="logout; open = false" class="login-link" style="background:none;border:none;cursor:pointer;">Logout</button>
          </template>
          <template v-else>
@@ -181,6 +215,49 @@ onMounted(() => {
            <router-link to="/registro" @click="open = false" class="btn-subscribe">Subscribe</router-link>
          </template>
        </div>
+    </div>
+
+    <div class="mobile-search-panel" id="mobile-search-panel" v-show="mobileSearchOpen" aria-label="Búsqueda móvil">
+      <div class="container mobile-search-inner">
+        <div class="header-search mobile-search">
+          <span class="search-icon" aria-hidden="true">
+            <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M21 21l-4.35-4.35"></path>
+            </svg>
+          </span>
+          <form @submit.prevent="handleSearch">
+            <input
+              v-model="searchQuery"
+              @input="onSearchInput"
+              @focus="onSearchInput"
+              type="text"
+              placeholder="Search articles..."
+              class="search-input"
+            />
+          </form>
+
+          <div v-if="showDropdown" class="search-dropdown">
+            <div v-if="isSearching" class="search-msg">Buscando...</div>
+            <div v-else-if="searchResults.length === 0" class="search-msg">No se encontraron artículos.</div>
+            <template v-else>
+              <router-link
+                v-for="res in searchResults"
+                :key="res.id"
+                :to="'/articulo/' + res.id"
+                class="search-result-item"
+                @click="showDropdown = false; mobileSearchOpen = false; searchQuery = ''"
+              >
+                <div class="search-result-img" :style="{ backgroundImage: 'url(' + (res.image_url || 'https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=100') + ')' }"></div>
+                <div class="search-result-info">
+                  <span class="search-result-title">{{ res.title }}</span>
+                  <span class="search-result-cat">{{ res.category }}</span>
+                </div>
+              </router-link>
+            </template>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 </template>
@@ -190,6 +267,34 @@ onMounted(() => {
 
 .header-search {
   position: relative;
+}
+
+.mobile-search-toggle{
+  display:none;
+  align-items:center;
+  justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:999px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  cursor:pointer;
+}
+
+.mobile-search-panel{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: 60;
+}
+
+.mobile-search-inner{
+  padding-top: 12px;
+}
+
+@media (max-width: 768px){
+  .mobile-search-toggle{display:inline-flex;}
 }
 
 .search-dropdown {
