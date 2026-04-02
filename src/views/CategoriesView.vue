@@ -12,7 +12,7 @@ const selectedCategory = ref('');
 const searchQuery = ref('');
 const isLoading = ref(true);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const imgKeys = ['typography', 'remote', 'smarthome', 'travel', 'mindfulness', 'web3'];
 const authorsList = [
@@ -81,15 +81,15 @@ watch(() => route.query, (newQuery) => {
   <main class="site-main categories-view">
     <div class="container">
       <div class="categories-header">
-        <h1>{{ searchQuery ? 'Resultados: "' + searchQuery + '"' : 'Categorías' }}</h1>
-        <p class="subtitle">{{ searchQuery ? 'Mostrando artículos que coinciden con tu búsqueda' : 'Explora artículos por tema de interés' }}</p>
+        <h1>{{ searchQuery ? 'Results: "' + searchQuery + '"' : 'Categories' }}</h1>
+        <p class="subtitle">{{ searchQuery ? 'Showing articles matching your search' : 'Explore articles by topic' }}</p>
       </div>
 
       <div class="category-chips">
         <button
           class="chip" :class="{ 'is-active': !selectedCategory }"
           @click="selectCategory('')"
-        >Todas</button>
+        >All</button>
         <button
           v-for="cat in categories" :key="cat.label"
           class="chip" :class="{ 'is-active': selectedCategory === cat.label }"
@@ -101,10 +101,10 @@ watch(() => route.query, (newQuery) => {
         <ArticleCard v-for="a in articles" :key="a.id" :article="a" />
       </div>
       <div v-else-if="!isLoading" class="empty-state">
-        <p>No se encontraron artículos en esta categoría.</p>
+        <p>No articles found in this category.</p>
       </div>
       <div v-else class="loading-state">
-        Cargando artículos...
+        Loading articles...
       </div>
     </div>
   </main>

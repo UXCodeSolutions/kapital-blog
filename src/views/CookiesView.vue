@@ -1,27 +1,27 @@
 <template>
   <main class="site-main">
     <div class="container" style="max-width: 800px; margin: 0 auto; padding: 4rem 2rem;">
-      <h1>Política de Cookies</h1>
-      <p class="legal-updated">Última actualización: Marzo 2026</p>
+      <h1>Cookie Policy</h1>
+      <p class="legal-updated">Last updated: March 2026</p>
 
-      <h3>1. ¿Qué son las Cookies?</h3>
-      <p>Las cookies son pequeños archivos de texto que se almacenan en tu dispositivo cuando visitas un sitio web. Nos ayudan a recordar tus preferencias y a entender cómo interactúas con nuestro contenido.</p>
+      <h3>1. What Are Cookies?</h3>
+      <p>Cookies are small text files stored on your device when you visit a website. They help us remember your preferences and understand how you interact with our content.</p>
 
-      <h3>2. Cookies que Utilizamos</h3>
+      <h3>2. Cookies We Use</h3>
       <ul>
-        <li><strong>Cookies esenciales:</strong> Permiten la funcionalidad básica del sitio, como recordar tu preferencia de tema (oscuro/claro).</li>
-        <li><strong>Cookies analíticas:</strong> Nos ayudan a entender cómo navegas por el sitio (páginas más visitadas, tiempo de sesión) para mejorar la experiencia editorial.</li>
-        <li><strong>Cookies publicitarias:</strong> Utilizadas por nuestros socios publicitarios para mostrarte anuncios relevantes basados en tus intereses de navegación.</li>
+        <li><strong>Essential cookies:</strong> Enable basic site functionality, such as remembering your theme preference (dark/light).</li>
+        <li><strong>Analytical cookies:</strong> Help us understand how you navigate the site (most visited pages, session duration) to improve the editorial experience.</li>
+        <li><strong>Advertising cookies:</strong> Used by our advertising partners to show you relevant ads based on your browsing interests.</li>
       </ul>
 
-      <h3>3. Gestión de Cookies</h3>
-      <p>Puedes configurar tu navegador para rechazar todas las cookies o para que te avise cuando se envíe una cookie. Ten en cuenta que algunas funcionalidades del sitio pueden verse afectadas si desactivas las cookies esenciales.</p>
+      <h3>3. Managing Cookies</h3>
+      <p>You can configure your browser to reject all cookies or to alert you when a cookie is being sent. Please note that some site features may be affected if you disable essential cookies.</p>
 
-      <h3>4. Cookies de Terceros</h3>
-      <p>Algunos servicios de terceros (como plataformas publicitarias o analíticas) pueden instalar cookies propias. KapitalBlog no controla estas cookies y te recomendamos consultar las políticas de privacidad de dichos servicios.</p>
+      <h3>4. Third-Party Cookies</h3>
+      <p>Some third-party services (such as advertising or analytics platforms) may set their own cookies. KapitalBlog does not control these cookies and we recommend consulting the privacy policies of those services.</p>
 
-      <h3>5. Contacto</h3>
-      <p>Para consultas sobre nuestra política de cookies, utiliza nuestro <router-link to="/contacto" style="color: var(--purple);">formulario de contacto</router-link>.</p>
+      <h3>5. Contact</h3>
+      <p>For questions about our cookie policy, please use our <router-link to="/contact" style="color: var(--purple);">contact form</router-link>.</p>
     </div>
   </main>
 </template>

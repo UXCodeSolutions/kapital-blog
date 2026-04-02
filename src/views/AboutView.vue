@@ -2,19 +2,19 @@
   <main class="site-main about-view">
     <div class="container about-container">
       <section class="about-hero">
-        <h1>Sobre Kapital</h1>
-        <p class="about-lead">El pulso diario del mundo financiero, económico y de negocios. Sin filtros, sin intermediarios.</p>
+        <h1>About Kapital</h1>
+        <p class="about-lead">The daily pulse of the financial, economic and business world. No filters, no middlemen.</p>
       </section>
 
       <section class="about-content">
         <div class="about-block">
-          <h2>Nuestra Misión</h2>
-          <p>KapitalBlog es un portal digital independiente y periodístico cuyo único objetivo es informar. Curamos y analizamos las noticias más relevantes de la macroeconomía, los mercados de valores, bienes raíces, tecnología financiera y adopción digital para mantenerte al día con el flujo global del capital.</p>
-          <p>No ofrecemos servicios financieros, no impartimos estrategias comerciales, ni proveemos recomendaciones de inversión de ningún tipo. Somos observadores del mercado que traducen la complejidad corporativa en piezas de lectura claras y accesibles.</p>
+          <h2>Our Mission</h2>
+          <p>KapitalBlog is an independent digital news portal whose sole purpose is to inform. We curate and analyze the most relevant news in macroeconomics, stock markets, real estate, financial technology and digital adoption to keep you up to date with the global flow of capital.</p>
+          <p>We do not offer financial services, trading strategies, or investment recommendations of any kind. We are market observers who translate corporate complexity into clear, accessible reading pieces.</p>
         </div>
 
         <div class="about-block">
-          <h2>¿Qué Cubrimos?</h2>
+          <h2>What We Cover</h2>
           <div class="topics-grid">
             <div class="topic-card">
               <span class="topic-icon" aria-hidden="true">
@@ -23,8 +23,8 @@
                   <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7H14a3.5 3.5 0 0 1 0 7H6"></path>
                 </svg>
               </span>
-              <h3>Presupuesto</h3>
-              <p>Noticias sobre políticas fiscales, presupuestos gubernamentales y flujos de capital</p>
+              <h3>Budget</h3>
+              <p>News on fiscal policies, government budgets and capital flows</p>
             </div>
             <div class="topic-card">
               <span class="topic-icon" aria-hidden="true">
@@ -38,8 +38,8 @@
                   <path d="M2 10l10-6 10 6" />
                 </svg>
               </span>
-              <h3>Ahorro</h3>
-              <p>Tendencias en tasas de interés, productos bancarios y movimientos del sector</p>
+              <h3>Savings</h3>
+              <p>Trends in interest rates, banking products and sector movements</p>
             </div>
             <div class="topic-card">
               <span class="topic-icon" aria-hidden="true">
@@ -48,8 +48,8 @@
                   <path d="M7 14l4-4 3 3 6-6"></path>
                 </svg>
               </span>
-              <h3>Inversión</h3>
-              <p>Cobertura de mercados bursátiles, criptomonedas y activos alternativos</p>
+              <h3>Investing</h3>
+              <p>Coverage of stock markets, cryptocurrencies and alternative assets</p>
             </div>
             <div class="topic-card">
               <span class="topic-icon" aria-hidden="true">
@@ -59,26 +59,26 @@
                   <path d="M7 15h4" />
                 </svg>
               </span>
-              <h3>Crédito</h3>
-              <p>Análisis del panorama crediticio, regulaciones y productos financieros</p>
+              <h3>Credit</h3>
+              <p>Analysis of the credit landscape, regulations and financial products</p>
             </div>
           </div>
         </div>
 
         <div class="about-block">
-          <h2>Nuestro Enfoque</h2>
-          <p>Operamos como una sala de redacción colaborativa y descentralizada. La información es más grande que cualquier individuo y, por ende, publicamos bajo el sello editorial único de Kapital, garantizando que el protagonista sea siempre la noticia, los datos y las historias, no la persona que las redacta.</p>
+          <h2>Our Approach</h2>
+          <p>We operate as a collaborative, decentralized newsroom. Information is bigger than any individual, and therefore we publish under Kapital's unique editorial seal, ensuring that the protagonist is always the news, the data and the stories — not the person who writes them.</p>
           <ul class="principles-list">
-            <li><strong>Claridad sobre jerga:</strong> Reducimos conceptos complejos sin simplificarlos excesivamente.</li>
-            <li><strong>Independencia basada en datos:</strong> Nuestros análisis se basan en métricas empíricas verificables.</li>
-            <li><strong>Solo noticias:</strong> No damos consejos financieros ni recomendaciones de inversión.</li>
+            <li><strong>Clarity over jargon:</strong> We simplify complex concepts without oversimplifying them.</li>
+            <li><strong>Data-driven independence:</strong> Our analyses are based on verifiable empirical metrics.</li>
+            <li><strong>News only:</strong> We do not give financial advice or investment recommendations.</li>
           </ul>
         </div>
 
         <div class="about-block about-cta">
-          <h2>¿Deseas ponerte en contacto?</h2>
-          <p>Para notas de prensa, correcciones o consultas generales a nuestra mesa de redacción.</p>
-          <router-link to="/contacto" class="btn-cta">Contáctanos →</router-link>
+          <h2>Want to get in touch?</h2>
+          <p>For press releases, corrections or general inquiries to our editorial desk.</p>
+          <router-link to="/contact" class="btn-cta">Contact Us →</router-link>
         </div>
       </section>
     </div>

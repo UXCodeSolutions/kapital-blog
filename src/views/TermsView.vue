@@ -1,34 +1,34 @@
 <template>
   <main class="site-main">
     <div class="container" style="max-width: 800px; margin: 0 auto; padding: 4rem 2rem;">
-      <h1>Términos y Condiciones</h1>
-      <p class="legal-updated">Última actualización: Marzo 2026</p>
+      <h1>Terms & Conditions</h1>
+      <p class="legal-updated">Last updated: March 2026</p>
 
-      <h3>1. Aceptación de los Términos</h3>
-      <p>Al acceder y utilizar KapitalBlog, aceptas estos términos y condiciones en su totalidad. Si no estás de acuerdo con alguno de estos términos, te pedimos que no utilices el sitio.</p>
+      <h3>1. Acceptance of Terms</h3>
+      <p>By accessing and using KapitalBlog, you accept these terms and conditions in full. If you do not agree with any of these terms, please do not use the site.</p>
 
-      <h3>2. Naturaleza del Contenido</h3>
-      <p>Todo el contenido publicado en KapitalBlog es exclusivamente periodístico e informativo. <strong>No constituye asesoramiento financiero, comercial, legal ni de inversión.</strong> El contenido publicado refleja el análisis editorial de la redacción y no debe interpretarse como una recomendación para tomar decisiones financieras.</p>
+      <h3>2. Nature of Content</h3>
+      <p>All content published on KapitalBlog is exclusively journalistic and informational. <strong>It does not constitute financial, commercial, legal or investment advice.</strong> The published content reflects the editorial analysis of the writing team and should not be interpreted as a recommendation for making financial decisions.</p>
 
-      <h3>3. Exención de Responsabilidad</h3>
-      <p>KapitalBlog no se hace responsable de:</p>
+      <h3>3. Disclaimer</h3>
+      <p>KapitalBlog is not responsible for:</p>
       <ul>
-        <li>Decisiones financieras o de inversión tomadas a partir de la información publicada en este sitio.</li>
-        <li>Pérdidas económicas derivadas del uso de la información aquí presentada.</li>
-        <li>La exactitud o puntualidad de la información en tiempo real, ya que los mercados financieros son intrínsecamente volátiles.</li>
+        <li>Financial or investment decisions made based on information published on this site.</li>
+        <li>Economic losses resulting from the use of information presented here.</li>
+        <li>The accuracy or timeliness of real-time information, as financial markets are inherently volatile.</li>
       </ul>
 
-      <h3>4. Propiedad Intelectual</h3>
-      <p>Todo el contenido editorial, diseño gráfico, marca y logotipos de KapitalBlog son propiedad del sitio. Queda prohibida su reproducción total o parcial sin autorización previa por escrito.</p>
+      <h3>4. Intellectual Property</h3>
+      <p>All editorial content, graphic design, branding and logos of KapitalBlog are the property of the site. Total or partial reproduction without prior written authorization is prohibited.</p>
 
-      <h3>5. Publicidad</h3>
-      <p>KapitalBlog puede mostrar anuncios de terceros. No somos responsables del contenido de dichos anuncios ni de los productos o servicios que promocionan. La presencia de un anuncio no implica respaldo editorial.</p>
+      <h3>5. Advertising</h3>
+      <p>KapitalBlog may display third-party advertisements. We are not responsible for the content of such ads or the products or services they promote. The presence of an ad does not imply editorial endorsement.</p>
 
-      <h3>6. Modificaciones</h3>
-      <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las modificaciones entrarán en vigor desde su publicación en esta página.</p>
+      <h3>6. Modifications</h3>
+      <p>We reserve the right to modify these terms at any time. Modifications will take effect from their publication on this page.</p>
 
-      <h3>7. Contacto</h3>
-      <p>Para cualquier consulta sobre estos términos, utiliza nuestro <router-link to="/contacto" style="color: var(--purple);">formulario de contacto</router-link>.</p>
+      <h3>7. Contact</h3>
+      <p>For any questions about these terms, please use our <router-link to="/contact" style="color: var(--purple);">contact form</router-link>.</p>
     </div>
   </main>
 </template>

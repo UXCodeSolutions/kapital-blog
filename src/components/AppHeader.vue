@@ -39,7 +39,7 @@ const logout = () => {
 const handleSearch = () => {
   const q = searchQuery.value.trim();
   if (q) {
-    router.push({ path: '/categorias', query: { q } });
+    router.push({ path: '/categories', query: { q } });
     searchQuery.value = '';
     showDropdown.value = false;
     open.value = false;
@@ -101,7 +101,7 @@ onMounted(() => {
 
 <template>
   <header class="header" role="banner">
-    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+    <a class="skip-link" href="#content">Skip to content</a>
 
     <div class="container header-inner">
       <router-link to="/" class="brand" aria-label="Marca" style="text-decoration:none">
@@ -113,7 +113,7 @@ onMounted(() => {
         </div>
       </router-link>
 
-      <nav class="nav" aria-label="Navegación principal">
+      <nav class="nav" aria-label="Main navigation">
         <router-link v-for="it in items" :key="it.path" :to="it.path" active-class="active" :exact="it.path === '/'">{{ it.label }}</router-link>
       </nav>
       
@@ -137,13 +137,13 @@ onMounted(() => {
         
         <!-- Live Search Dropdown -->
         <div v-if="showDropdown" class="search-dropdown">
-          <div v-if="isSearching" class="search-msg">Buscando...</div>
-          <div v-else-if="searchResults.length === 0" class="search-msg">No se encontraron artículos.</div>
+          <div v-if="isSearching" class="search-msg">Searching...</div>
+          <div v-else-if="searchResults.length === 0" class="search-msg">No articles found.</div>
           <template v-else>
             <router-link 
               v-for="res in searchResults" 
               :key="res.id" 
-              :to="'/articulo/' + res.id" 
+              :to="'/article/' + res.id" 
               class="search-result-item"
               @click="showDropdown = false; searchQuery = ''"
             >
@@ -164,12 +164,12 @@ onMounted(() => {
          </template>
          <template v-else>
            <router-link to="/login" class="login-link">Log In</router-link>
-           <router-link to="/registro" class="btn-subscribe">Subscribe</router-link>
+           <router-link to="/register" class="btn-subscribe">Subscribe</router-link>
          </template>
          <button
           class="theme-toggle"
           type="button"
-          aria-label="Cambiar tema"
+          aria-label="Toggle theme"
           :aria-pressed="theme === 'dark' ? 'true' : 'false'"
           @click="toggleTheme"
         >
@@ -188,7 +188,7 @@ onMounted(() => {
           <circle cx="11" cy="11" r="7"></circle>
           <path d="M21 21l-4.35-4.35"></path>
         </svg>
-        <span class="sr-only">Buscar</span>
+        <span class="sr-only">Search</span>
       </button>
 
       <button
@@ -201,11 +201,11 @@ onMounted(() => {
         <span class="nav-toggle-line" aria-hidden="true"></span>
         <span class="nav-toggle-line" aria-hidden="true"></span>
         <span class="nav-toggle-line" aria-hidden="true"></span>
-        <span class="sr-only">Abrir menú</span>
+        <span class="sr-only">Open menu</span>
       </button>
     </div>
 
-    <div class="container nav-mobile" id="nav-mobile" v-show="open" aria-label="Menú móvil">
+    <div class="container nav-mobile" id="nav-mobile" v-show="open" aria-label="Mobile menu">
       <router-link v-for="it in items" :key="'m-'+it.path" :to="it.path" @click="open = false">{{ it.label }}</router-link>
        <div class="mobile-actions">
          <template v-if="isLoggedIn">
@@ -214,12 +214,12 @@ onMounted(() => {
          </template>
          <template v-else>
            <router-link to="/login" @click="open = false" class="login-link">Log In</router-link>
-           <router-link to="/registro" @click="open = false" class="btn-subscribe">Subscribe</router-link>
+           <router-link to="/register" @click="open = false" class="btn-subscribe">Subscribe</router-link>
          </template>
        </div>
     </div>
 
-    <div class="mobile-search-panel" id="mobile-search-panel" v-show="mobileSearchOpen" aria-label="Búsqueda móvil">
+    <div class="mobile-search-panel" id="mobile-search-panel" v-show="mobileSearchOpen" aria-label="Mobile search">
       <div class="container mobile-search-inner">
         <div class="header-search mobile-search">
           <span class="search-icon" aria-hidden="true">
@@ -240,13 +240,13 @@ onMounted(() => {
           </form>
 
           <div v-if="showDropdown" class="search-dropdown">
-            <div v-if="isSearching" class="search-msg">Buscando...</div>
-            <div v-else-if="searchResults.length === 0" class="search-msg">No se encontraron artículos.</div>
+            <div v-if="isSearching" class="search-msg">Searching...</div>
+            <div v-else-if="searchResults.length === 0" class="search-msg">No articles found.</div>
             <template v-else>
               <router-link
                 v-for="res in searchResults"
                 :key="res.id"
-                :to="'/articulo/' + res.id"
+                :to="'/article/' + res.id"
                 class="search-result-item"
                 @click="showDropdown = false; mobileSearchOpen = false; searchQuery = ''"
               >

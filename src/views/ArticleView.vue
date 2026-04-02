@@ -6,7 +6,7 @@ const route = useRoute();
 const article = ref(null);
 const isLoading = ref(true);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const imgKeys = ['typography', 'remote', 'smarthome', 'travel', 'mindfulness', 'web3'];
 
@@ -36,7 +36,7 @@ onMounted(() => {
 <template>
   <main class="site-main article-view">
     <div class="container" v-if="isLoading" style="padding: 4rem 2rem; text-align: center; color: var(--muted);">
-      Cargando artículo...
+      Loading article...
     </div>
     
     <template v-else-if="article">
@@ -51,13 +51,13 @@ onMounted(() => {
         <h1 class="article-title">{{ article.title }}</h1>
         
         <div class="article-meta-bar">
-          <div class="meta-details">Publicado el {{ article.date }} · ⏱ {{ article.readTime }} de lectura</div>
+          <div class="meta-details">Published on {{ article.date }} · ⏱ {{ article.readTime }} read</div>
         </div>
 
         <div class="article-layout-grid">
-          <!-- Anuncio Lateral Izquierdo -->
+          <!-- Left Sidebar -->
           <aside class="article-sidebar sidebar-left">
-            <div class="ad-skyscraper">Espacio Publicitario</div>
+            <div class="ad-skyscraper">Advertisement block</div>
           </aside>
           
           <!-- Article Content -->
@@ -71,21 +71,21 @@ onMounted(() => {
             
             <!-- Back Link -->
             <div class="article-back">
-              <router-link to="/" class="back-link">← Volver al inicio</router-link>
+              <router-link to="/" class="back-link">← Back to Home</router-link>
             </div>
           </div>
           
-          <!-- Anuncio Lateral Derecho -->
+          <!-- Right Sidebar -->
           <aside class="article-sidebar sidebar-right">
-            <div class="ad-skyscraper">Espacio Publicitario</div>
+            <div class="ad-skyscraper">Advertisement block</div>
           </aside>
         </div>
       </div>
     </template>
     
     <div class="container" v-else style="padding: 4rem 2rem; text-align: center;">
-      <h2>Artículo no encontrado</h2>
-      <router-link to="/" style="color: var(--purple);">Volver al inicio</router-link>
+      <h2>Article not found</h2>
+      <router-link to="/" style="color: var(--purple);">Back to Home</router-link>
     </div>
   </main>
 </template>

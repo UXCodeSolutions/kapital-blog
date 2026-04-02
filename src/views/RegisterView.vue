@@ -10,20 +10,20 @@ const confirmPassword = ref('');
 const error = ref('');
 const isLoading = ref(false);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const handleRegister = async () => {
   error.value = '';
   if (!username.value || !email.value || !password.value || !confirmPassword.value) {
-    error.value = 'Por favor completa todos los campos';
+    error.value = 'Please fill in all fields';
     return;
   }
   if (password.value !== confirmPassword.value) {
-    error.value = 'Las contraseñas no coinciden';
+    error.value = 'Passwords do not match';
     return;
   }
   if (password.value.length < 6) {
-    error.value = 'La contraseña debe tener al menos 6 caracteres';
+    error.value = 'Password must be at least 6 characters';
     return;
   }
   isLoading.value = true;
@@ -34,7 +34,7 @@ const handleRegister = async () => {
       body: JSON.stringify({ username: username.value, email: email.value, password: password.value })
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || 'Error al registrar');
+    if (!res.ok) throw new Error(data.detail || 'Registration failed');
     localStorage.setItem('kapital-token', data.token);
     localStorage.setItem('kapital-user', JSON.stringify({ id: data.id, username: data.username, email: data.email }));
     router.push('/');
@@ -51,37 +51,37 @@ const handleRegister = async () => {
     <div class="container auth-container">
       <div class="auth-card">
         <div class="auth-header">
-          <h1>Crear Cuenta</h1>
-          <p>Únete a la comunidad de Kapital</p>
+          <h1>Create Account</h1>
+          <p>Join the Kapital community</p>
         </div>
 
         <form @submit.prevent="handleRegister" class="auth-form">
           <div class="form-group">
-            <label for="username">Nombre de usuario</label>
-            <input id="username" v-model="username" type="text" placeholder="tunombre" autocomplete="username" />
+            <label for="username">Username</label>
+            <input id="username" v-model="username" type="text" placeholder="yourname" autocomplete="username" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" v-model="email" type="email" placeholder="tu@email.com" autocomplete="email" />
+            <input id="email" v-model="email" type="email" placeholder="you@email.com" autocomplete="email" />
           </div>
           <div class="form-group">
-            <label for="password">Contraseña</label>
-            <input id="password" v-model="password" type="password" placeholder="Mínimo 6 caracteres" autocomplete="new-password" />
+            <label for="password">Password</label>
+            <input id="password" v-model="password" type="password" placeholder="Min 6 characters" autocomplete="new-password" />
           </div>
           <div class="form-group">
-            <label for="confirmPassword">Confirmar contraseña</label>
-            <input id="confirmPassword" v-model="confirmPassword" type="password" placeholder="Repite tu contraseña" autocomplete="new-password" />
+            <label for="confirmPassword">Confirm Password</label>
+            <input id="confirmPassword" v-model="confirmPassword" type="password" placeholder="Repeat your password" autocomplete="new-password" />
           </div>
 
           <div v-if="error" class="auth-error">{{ error }}</div>
 
           <button type="submit" class="btn-auth" :disabled="isLoading">
-            {{ isLoading ? 'Registrando...' : 'Crear Cuenta' }}
+            {{ isLoading ? 'Creating...' : 'Create Account' }}
           </button>
         </form>
 
         <p class="auth-switch">
-          ¿Ya tienes cuenta? <router-link to="/login">Inicia sesión</router-link>
+          Already have an account? <router-link to="/login">Sign in</router-link>
         </p>
       </div>
     </div>

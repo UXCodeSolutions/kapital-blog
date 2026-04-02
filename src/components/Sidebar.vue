@@ -19,12 +19,12 @@ const handleSearch = () => {
 };
 
 const goToTag = (tag) => {
-  router.push({ path: '/categorias', query: { q: tag } });
+  router.push({ path: '/categories', query: { q: tag } });
 };
 </script>
 
 <template>
-  <aside class="sidebar" aria-label="Barra lateral">
+  <aside class="sidebar" aria-label="Sidebar">
     <div class="search-sidebar">
       <span class="search-icon" aria-hidden="true">
         <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -40,10 +40,10 @@ const goToTag = (tag) => {
     
     <div class="trending-tags">
       <span class="trending-label">Trending:</span>
-      <a href="#" class="tag" @click.prevent="goToTag('Presupuesto')">#Presupuesto</a>
-      <a href="#" class="tag" @click.prevent="goToTag('Inversión')">#Inversión</a>
-      <a href="#" class="tag" @click.prevent="goToTag('Ahorro')">#Ahorro</a>
-      <a href="#" class="tag" @click.prevent="goToTag('Crédito')">#Crédito</a>
+      <a href="#" class="tag" @click.prevent="goToTag('Budget')">#Budget</a>
+      <a href="#" class="tag" @click.prevent="goToTag('Investing')">#Investing</a>
+      <a href="#" class="tag" @click.prevent="goToTag('Savings')">#Savings</a>
+      <a href="#" class="tag" @click.prevent="goToTag('Credit')">#Credit</a>
     </div>
   </aside>
 </template>

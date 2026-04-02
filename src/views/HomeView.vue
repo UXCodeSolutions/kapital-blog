@@ -16,7 +16,7 @@ const newsletterEmail = ref('');
 const newsletterStatus = ref('');
 const newsletterLoading = ref(false);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const imgKeys = ['typography', 'remote', 'smarthome', 'travel', 'mindfulness', 'web3'];
 
@@ -33,7 +33,7 @@ const enrichArticles = (data, startIndex = 0) => {
 const fetchArticles = async () => {
   try {
     const response = await fetch(`${API}/articles?skip=0&limit=${limit}`);
-    if (!response.ok) throw new Error('Error al cargar artículos');
+    if (!response.ok) throw new Error('Error loading articles');
     const data = await response.json();
     articles.value = enrichArticles(data);
     skip.value = data.length;
@@ -76,7 +76,7 @@ const subscribeNewsletter = async () => {
     newsletterStatus.value = data.message;
     if (data.status === 'subscribed') newsletterEmail.value = '';
   } catch (e) {
-    newsletterStatus.value = 'Error al suscribir. Intenta de nuevo.';
+    newsletterStatus.value = 'Error subscribing. Please try again.';
   } finally {
     newsletterLoading.value = false;
   }
@@ -84,16 +84,16 @@ const subscribeNewsletter = async () => {
 
 const handleSearch = (query) => {
   if (query.trim()) {
-    router.push({ path: '/categorias', query: { q: query.trim() } });
+    router.push({ path: '/categories', query: { q: query.trim() } });
   }
 };
 
 const goToCategory = (cat) => {
-  router.push({ path: '/categorias', query: { cat } });
+  router.push({ path: '/categories', query: { cat } });
 };
 
 const goToSearch = (tag) => {
-  router.push({ path: '/categorias', query: { q: tag } });
+  router.push({ path: '/categories', query: { q: tag } });
 };
 
 onMounted(() => {
@@ -101,10 +101,10 @@ onMounted(() => {
 });
 
 const browseCategories = [
-  { label: 'Presupuesto', count: 'Artículos', imgKey: 'cat-design' },
-  { label: 'Ahorro', count: 'Artículos', imgKey: 'cat-technology' },
-  { label: 'Inversión', count: 'Artículos', imgKey: 'cat-business' },
-  { label: 'Crédito', count: 'Artículos', imgKey: 'cat-lifestyle' },
+  { label: 'Budget', count: 'Articles', imgKey: 'cat-design' },
+  { label: 'Savings', count: 'Articles', imgKey: 'cat-technology' },
+  { label: 'Investing', count: 'Articles', imgKey: 'cat-business' },
+  { label: 'Credit', count: 'Articles', imgKey: 'cat-lifestyle' },
 ];
 
 const authors = [
@@ -122,14 +122,15 @@ const scrollTo = (id) => {
 </script>
 
 <template>
-  <main id="contenido" class="site-main" role="main">
+  <main id="content" class="site-main" role="main">
     
     <!-- HEADER SLIDER (Actuando como Hero Dinámico) -->
     <SliderHeader :articles="articles" v-if="articles.length > 0" />
-    <div v-else style="padding: 60px 0; text-align: center; color: var(--muted);">Cargando artículos...</div>
+    <div v-else style="padding: 60px 0; text-align: center; color: var(--muted);">Loading articles...</div>
 
-    <!-- AD PLACEHOLDER TOP -->
-    <AdPlaceholder text="Ad Space - Top Banner" height="90px" />
+    <!-- ADVERTISEMENT TOP BANNER -->
+    <AdPlaceholder text="Advertisement" height="90px" />
+
 
     <section class="section search-bar-section">
        <div class="container">
@@ -145,14 +146,14 @@ const scrollTo = (id) => {
               <h2>Latest Insights</h2>
               <p class="subtitle">Explore our newest perspectives on markets, investing, and the global economy.</p>
             </div>
-            <router-link to="/categorias" class="view-all">View All Articles &gt;</router-link>
+            <router-link to="/categories" class="view-all">View All Articles &gt;</router-link>
           </div>
 
-          <div class="cards architecture-grid" aria-label="Listado de artículos" v-if="!isLoading">
+          <div class="cards architecture-grid" aria-label="Article list" v-if="!isLoading">
             <ArticleCard v-for="a in articles" :key="a.id" :article="a" />
           </div>
           <div v-else style="padding: 2rem; text-align: center; color: var(--muted);">
-            Cargando artículos...
+            Loading articles...
           </div>
           
           <div class="load-more-container" v-if="!isLoading && hasMore">
@@ -161,9 +162,11 @@ const scrollTo = (id) => {
         </div>
       </div>
     </section>
+
+    <!-- ADVERTISEMENT IN FEED -->
+    <AdPlaceholder text="Advertisement - In Feed" height="150px" />
     
-    <!-- AD PLACEHOLDER MIDDLE -->
-    <AdPlaceholder text="Ad Space - In Feed" height="150px" />
+
 
     <section class="section" id="categorias" aria-label="Browse by Category">
       <div class="container">
@@ -172,7 +175,7 @@ const scrollTo = (id) => {
               <h2>Browse by Category</h2>
               <p class="subtitle">Deep dives into the topics that matter most.</p>
             </div>
-            <router-link to="/categorias" class="view-all">Explore All Topics &gt;</router-link>
+            <router-link to="/categories" class="view-all">Explore All Topics &gt;</router-link>
           </div>
           
           <div class="browse-categories-grid">

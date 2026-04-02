@@ -8,12 +8,12 @@ const password = ref('');
 const error = ref('');
 const isLoading = ref(false);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const handleLogin = async () => {
   error.value = '';
   if (!email.value || !password.value) {
-    error.value = 'Por favor completa todos los campos';
+    error.value = 'Please fill in all fields';
     return;
   }
   isLoading.value = true;
@@ -24,7 +24,7 @@ const handleLogin = async () => {
       body: JSON.stringify({ email: email.value, password: password.value })
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || 'Error al iniciar sesión');
+    if (!res.ok) throw new Error(data.detail || 'Login failed');
     localStorage.setItem('kapital-token', data.token);
     localStorage.setItem('kapital-user', JSON.stringify({ id: data.id, username: data.username, email: data.email }));
     router.push('/');
@@ -41,29 +41,29 @@ const handleLogin = async () => {
     <div class="container auth-container">
       <div class="auth-card">
         <div class="auth-header">
-          <h1>Iniciar Sesión</h1>
-          <p>Accede a tu cuenta de Kapital</p>
+          <h1>Sign In</h1>
+          <p>Access your Kapital account</p>
         </div>
 
         <form @submit.prevent="handleLogin" class="auth-form">
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" v-model="email" type="email" placeholder="tu@email.com" autocomplete="email" />
+            <input id="email" v-model="email" type="email" placeholder="you@email.com" autocomplete="email" />
           </div>
           <div class="form-group">
-            <label for="password">Contraseña</label>
+            <label for="password">Password</label>
             <input id="password" v-model="password" type="password" placeholder="••••••••" autocomplete="current-password" />
           </div>
 
           <div v-if="error" class="auth-error">{{ error }}</div>
 
           <button type="submit" class="btn-auth" :disabled="isLoading">
-            {{ isLoading ? 'Entrando...' : 'Iniciar Sesión' }}
+            {{ isLoading ? 'Signing in...' : 'Sign In' }}
           </button>
         </form>
 
         <p class="auth-switch">
-          ¿No tienes cuenta? <router-link to="/registro">Regístrate aquí</router-link>
+          Don't have an account? <router-link to="/register">Create one</router-link>
         </p>
       </div>
     </div>

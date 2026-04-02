@@ -8,13 +8,13 @@ const status = ref('');
 const isError = ref(false);
 const isLoading = ref(false);
 
-const API = 'http://localhost:8000';
+const API = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '');
 
 const handleSubmit = async () => {
   status.value = '';
   isError.value = false;
   if (!name.value || !email.value || !message.value) {
-    status.value = 'Por favor completa todos los campos';
+    status.value = 'Please fill in all fields';
     isError.value = true;
     return;
   }
@@ -26,7 +26,7 @@ const handleSubmit = async () => {
       body: JSON.stringify({ name: name.value, email: email.value, message: message.value })
     });
     const data = await res.json();
-    if (!res.ok) throw new Error(data.detail || 'Error al enviar');
+    if (!res.ok) throw new Error(data.detail || 'Error sending message');
     status.value = data.message;
     isError.value = false;
     name.value = '';
@@ -45,8 +45,8 @@ const handleSubmit = async () => {
   <main class="site-main contact-view">
     <div class="container contact-container">
       <div class="contact-info">
-        <h1>Contáctanos</h1>
-        <p>¿Tienes alguna pregunta, sugerencia o propuesta de colaboración? Nos encantaría escucharte.</p>
+        <h1>Contact Us</h1>
+        <p>Have a question, suggestion, or collaboration idea? We'd love to hear from you.</p>
         <div class="contact-details">
           <div class="detail-item">
             <span class="detail-icon" aria-hidden="true">
@@ -68,8 +68,8 @@ const handleSubmit = async () => {
               </svg>
             </span>
             <div>
-              <strong>Tiempo de respuesta</strong>
-              <p>Respondemos en 24-48 horas</p>
+              <strong>Response Time</strong>
+              <p>We reply within 24-48 hours</p>
             </div>
           </div>
           <div class="detail-item">
@@ -80,8 +80,8 @@ const handleSubmit = async () => {
               </svg>
             </span>
             <div>
-              <strong>Redes sociales</strong>
-              <p>@KapitalBlog en todas las plataformas</p>
+              <strong>Social Media</strong>
+              <p>@KapitalBlog on all platforms</p>
             </div>
           </div>
         </div>
@@ -90,22 +90,22 @@ const handleSubmit = async () => {
       <div class="contact-card">
         <form @submit.prevent="handleSubmit" class="contact-form">
           <div class="form-group">
-            <label for="name">Nombre</label>
-            <input id="name" v-model="name" type="text" placeholder="Tu nombre completo" />
+            <label for="name">Name</label>
+            <input id="name" v-model="name" type="text" placeholder="Your full name" />
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input id="email" v-model="email" type="email" placeholder="tu@email.com" />
+            <input id="email" v-model="email" type="email" placeholder="you@email.com" />
           </div>
           <div class="form-group">
-            <label for="message">Mensaje</label>
-            <textarea id="message" v-model="message" rows="5" placeholder="Escribe tu mensaje aquí..."></textarea>
+            <label for="message">Message</label>
+            <textarea id="message" v-model="message" rows="5" placeholder="Write your message here..."></textarea>
           </div>
 
           <div v-if="status" :class="['form-status', isError ? 'error' : 'success']">{{ status }}</div>
 
           <button type="submit" class="btn-contact" :disabled="isLoading">
-            {{ isLoading ? 'Enviando...' : 'Enviar Mensaje' }}
+            {{ isLoading ? 'Sending...' : 'Send Message' }}
           </button>
         </form>
       </div>

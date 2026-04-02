@@ -21,9 +21,9 @@ applyTheme(theme.value);
 
 const navItems = [
   { path: '/', label: 'Home' },
-  { path: '/categorias', label: 'Categorías' },
-  { path: '/sobre', label: 'Sobre' },
-  { path: '/contacto', label: 'Contacto' },
+  { path: '/categories', label: 'Categories' },
+  { path: '/about', label: 'About' },
+  { path: '/contact', label: 'Contact' },
 ];
 
 const toggleTheme = () => {
