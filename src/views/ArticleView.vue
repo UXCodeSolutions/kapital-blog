@@ -150,7 +150,7 @@ onMounted(() => {
 .back-link { color: var(--purple); font-weight: 600; font-size: 16px; }
 .back-link:hover { text-decoration: underline; }
 
-/* Grid de anuncios laterales */
+/* Grid of side advertisements */
 .article-layout-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -158,7 +158,7 @@ onMounted(() => {
   margin-top: 2rem;
 }
 .article-sidebar {
-  display: none; /* Oculto en mviles por defecto */
+  display: none; /* Hidden on mobile by default */
 }
 .ad-skyscraper {
   width: 100%;
@@ -177,9 +177,9 @@ onMounted(() => {
 }
 
 @media (min-width: 1024px) {
-  .article-body { max-width: 1200px; } /* Aumentar ancho para dar cabida a los laterales */
+  .article-body { max-width: 1200px; } /* Increase width to accommodate sidebars */
   .article-layout-grid {
-    grid-template-columns: 200px 1fr 200px; /* Layout principal con laterales fijos */
+    grid-template-columns: 200px 1fr 200px; /* Main layout with fixed sidebars */
   }
   .article-sidebar {
     display: block;

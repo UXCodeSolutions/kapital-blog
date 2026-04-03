@@ -57,7 +57,7 @@ const handleSubmit = async () => {
             </span>
             <div>
               <strong>Email</strong>
-              <p>contacto@kapital.blog</p>
+              <p>contact@kapital.blog</p>
             </div>
           </div>
           <div class="detail-item">
