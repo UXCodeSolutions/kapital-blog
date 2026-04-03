@@ -125,8 +125,9 @@ const scrollTo = (id) => {
   <main id="content" class="site-main" role="main">
     
     <!-- HEADER SLIDER (Actuando como Hero Dinámico) -->
-    <SliderHeader :articles="articles" v-if="articles.length > 0" />
-    <div v-else style="padding: 60px 0; text-align: center; color: var(--muted);">Loading articles...</div>
+    <div v-if="isLoading" style="padding: 60px 0; text-align: center; color: var(--muted);">Loading articles...</div>
+    <SliderHeader :articles="articles" v-else-if="articles.length > 0" />
+    <div v-else style="padding: 60px 0; text-align: center; color: var(--muted);">No articles found. Please configure your VITE_API_URL.</div>
 
     <!-- ADVERTISEMENT TOP BANNER -->
     <AdPlaceholder text="Advertisement" height="90px" />
